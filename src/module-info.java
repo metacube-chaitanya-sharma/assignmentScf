@@ -4,5 +4,5 @@
 /**
  * 
  */
-module Assignment {
+module assignmentScf {
 }
