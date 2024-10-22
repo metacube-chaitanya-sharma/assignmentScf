@@ -4,6 +4,7 @@ public class HexaCalc {
 
 	public static void main(String[] args) {
 		
+		// Enter only hexadecimal number 0-9 and A-F
 		String number1 = "1A";
 		String number2 = "1AB";
 		
