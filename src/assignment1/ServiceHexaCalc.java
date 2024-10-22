@@ -13,9 +13,10 @@ public class ServiceHexaCalc {
 		
 		for(int i=len-1; i>=0; i--) {
 			
+			//635A
 			if(value.charAt(i) >= '0' && value.charAt(i) <= '9') {
 				
-				decimalValue += (value.charAt(i) - 0) * base; 
+				decimalValue += (value.charAt(i) - '0') * base; 
 				
 				base = base * 16; 
 				
@@ -37,7 +38,7 @@ public class ServiceHexaCalc {
 	
 		String ans  ="";
 	    
-	    while(num != 0){
+	    while(num > 0){
 	      
 	     int temp =0; 
 	     

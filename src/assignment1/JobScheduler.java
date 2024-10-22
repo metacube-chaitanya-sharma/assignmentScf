@@ -17,6 +17,7 @@ public class JobScheduler {
 		ArrayList<Integer> ans = new ArrayList<Integer>();
 		
 		ServiceJobScheduler serviceJobScheduler = new ServiceJobScheduler();
+		
         System.out.println("completionTime -> " + serviceJobScheduler.completionTime(process , ans)); 
 		System.out.println("waitingTime -> " + serviceJobScheduler.waitingTime(process, ans)); 
 		System.out.println("turnAroundTime -> " + serviceJobScheduler.turnAroundTime(process, ans)); 
