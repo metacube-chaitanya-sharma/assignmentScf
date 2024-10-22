@@ -35,7 +35,7 @@ public class ServiceHexaCalc {
 	// Convert Decimal into HexaDecimal
 	public String decimalToHexa(Integer num) {
 	
-		String reverseAns  ="";
+		String ans  ="";
 	    
 	    while(num != 0){
 	      
@@ -44,26 +44,19 @@ public class ServiceHexaCalc {
 	     temp = num % 16 ; 
 	     
 	     if(temp < 10 ){
-	       reverseAns += (char) (temp + '0'); 
+	       ans = (char) (temp + '0') + ans; 
 	       
 	     }
 	     else{
-	       reverseAns += (char)(temp + 'A' - 10);
+	       ans = (char)(temp + 'A' - 10) + ans;
 	     }
 	     
 	     num = num /16; 
 	    }
 	    
-	    String ans =""; 
-	    char ch; 
+	   
 	    
-	    for(int i=0; i<reverseAns.length(); i++){
-	      
-	      ch = reverseAns.charAt(i);
-	      ans = ch + ans; 
-	    }
-	    
-	    return ans; 
+	    return ans;
 	}
 	
 	// Add two number
