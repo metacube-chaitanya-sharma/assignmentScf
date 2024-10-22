@@ -62,6 +62,11 @@ public class ServiceHexaCalc {
 	// Add two number
 	public String add(String number1 , String number2) {
 		
+		if(number1 == null || number2 == null) {
+			System.out.println("You should pass valid number"); 
+			return " ";
+		}
+		
 		int num1 = hexaToDecimal(number1); 
 		int num2 = hexaToDecimal(number2);
 		
@@ -77,6 +82,11 @@ public class ServiceHexaCalc {
 	
 	// Subtract two number
 	public String subtract(String number1 , String number2) {
+		
+		if(number1 == null || number2 == null) {
+			System.out.println("You should pass valid number"); 
+			return " ";
+		}
 		
 		int num1 = hexaToDecimal(number1); 
 		int num2 = hexaToDecimal(number2);
@@ -95,6 +105,11 @@ public class ServiceHexaCalc {
 	//multiply two number
 	public String  multiply(String number1 , String number2) {
 		
+		if(number1 == null || number2 == null) {
+			System.out.println("You should pass valid number"); 
+			return " ";
+		}
+		
 		int num1 = hexaToDecimal(number1); 
 		int num2 = hexaToDecimal(number2);
 		
@@ -104,6 +119,11 @@ public class ServiceHexaCalc {
 	
 	//divide two number
 	public String divide(String number1 , String number2) {
+		
+		if(number1 == null || number2 == null) {
+			System.out.println("You should pass valid number"); 
+			return " ";
+		}
 		
 		if(number2 == "0") {
 			return "Number2 should be greater than 0"; 
@@ -121,6 +141,15 @@ public class ServiceHexaCalc {
 	
 	// check the twoNumber they are equal , greater , lesser
 	public boolean compareTwoNumber(String number1 , String number2 , String operator) {
+		
+		if(number1 == null || number2 == null ) {
+			System.out.println("You should pass valid number"); 
+			return false;
+		}
+		if(operator == null) {
+			System.out.println("you should pass the valid operator (== , > ,<");
+			return false; 
+		}
 		
 		int len1 = number1.length();
 		int len2 = number2.length();
