@@ -16,6 +16,9 @@ public class TriangleArea implements Shape {
 		this.height = height;
 	}
 
+	/**
+	 * calculate the triangle area
+	 */
 	public double area() {
 		
 		return (0.5 * width * height);

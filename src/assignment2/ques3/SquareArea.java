@@ -14,7 +14,9 @@ public class SquareArea implements Shape {
 		this.width = width;
 	}
 
-	@Override
+	/**
+	 * calculate the square area
+	 */
 	public double area() {
 		// TODO Auto-generated method stub
 	

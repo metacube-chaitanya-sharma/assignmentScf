@@ -18,7 +18,9 @@ public class RectangleArea implements Shape{
 	}
 
 
-
+    /** 
+     * calculate the area of rectangle
+     */
 	public double area() {
 		
 		return width * height; 

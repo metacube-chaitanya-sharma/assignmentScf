@@ -14,7 +14,9 @@ public class CircleArea implements Shape {
 		this.radius = radius;
 	}
 
-	// calculate the area of circle
+	/**
+	 *  calculate the area of circle
+	 */
 	public double area() {
 		// TODO Auto-generated method stub
 		return (3.14*radius*radius);

@@ -11,9 +11,15 @@ public class CompareString {
 		
 		System.out.println("enter the String1");
 		String str1 = sc.nextLine();
+		if(str1 == "") {
+			throw new NullPointerException("String1 cannot be empty");
+		}
 		
 		System.out.println("enter the String2");
 		String str2 = sc.nextLine();
+		if(str2 == "") {
+			throw new NullPointerException("String2 cannot be empty");
+		}
 		
 		CompareStringService service = new CompareStringService();
 		

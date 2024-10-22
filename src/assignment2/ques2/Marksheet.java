@@ -10,7 +10,6 @@ public class Marksheet {
 		// TODO Auto-generated method stub
         
 		DecimalFormat df = new DecimalFormat("#.##");
-		
 		Scanner sc = new Scanner(System.in);
 		
 		// Number of Student
@@ -23,7 +22,13 @@ public class Marksheet {
 		// take the input from the user
 		for(int i=0; i<numberOfStudent; i++) {
 			System.out.println("Enter the grades of student "+(i+1)+" from 0 to 100");
+			int num = sc.nextInt(); 
+			if(num >= 0 && num <=100) {
 			grades.add(sc.nextInt());
+			}
+			else {
+				throw new ArithmeticException("enter the marks should be greater or equal to  0 and less than or equal to 100");
+			}
 		}
 		
 		MarksheetService service = new MarksheetService();
