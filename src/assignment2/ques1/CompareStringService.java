@@ -115,14 +115,15 @@ public class CompareStringService {
 
 		 int maxi = -1; 
 		 
-		 for(HashMap.Entry<Integer, String> it : freq.entrySet()){
-            	 
-			 if(it.getKey() > maxi) {
-				 maxi = it.getKey();
+		 
+		 for(Integer key: freq.keySet() ) {
+			 
+			 if(key > maxi) {
+				 maxi = key;
 				 
 			 }
 			 
-             }
+		 }
 		 
 		 return freq.get(maxi);
 		

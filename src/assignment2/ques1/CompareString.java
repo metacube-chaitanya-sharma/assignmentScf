@@ -14,12 +14,14 @@ public class CompareString {
 		if(str1 == "") {
 			throw new NullPointerException("String1 cannot be empty");
 		}
+		str1 = str1.trim(); 
 		
 		System.out.println("enter the String2");
 		String str2 = sc.nextLine();
 		if(str2 == "") {
 			throw new NullPointerException("String2 cannot be empty");
 		}
+		str2 = str2.trim(); 
 		
 		CompareStringService service = new CompareStringService();
 		
