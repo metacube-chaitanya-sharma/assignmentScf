@@ -17,6 +17,7 @@ public class ClumpsArrayService {
 		    currCnt =0,
 		    len = countClumps.length; 
 		
+		
 		while(secondIndex<len) {
 			
 			if(countClumps[firstIndex] != countClumps[secondIndex]) {
