@@ -18,10 +18,7 @@ public class SplitArray {
 			
 			if(len <= 0) 
 				throw new AssertionError(); 
-		}
-		catch(AssertionError e) {
-			System.out.println("Size must be greater than 0"); 
-		}
+
 		
 		int [] inputArray = new int[len];
 		
@@ -32,8 +29,13 @@ public class SplitArray {
 		}
 		
 		
-		Service service = new Service();
+		SplitArrayService service = new SplitArrayService();
 		System.out.println("index " + service.splitIndex(inputArray));
+		
+		}
+		catch(AssertionError e) {
+			System.out.println("Not a Valid number"); 
+		}
 
 	}
 

@@ -16,13 +16,9 @@ public class RearrangedArray {
 		
        try {
 			
-			if(len <= 0) {
+			if(len <= 0)
 				throw new AssertionError(); 
-			}
-		}
-		catch(AssertionError e) {
-			System.out.println("Size must be greater than 0"); 
-		}
+
 		
 		ArrayList<Integer> fixXY = new ArrayList<Integer>();
 		
@@ -42,9 +38,16 @@ public class RearrangedArray {
 		
 		
 		
-		Service service = new Service();
+		RearrangedArrayService service = new RearrangedArrayService();
 		System.out.println( service.rearrangeTheArray(fixXY , X , Y));
 		
+		}
+		catch(AssertionError e) {
+			System.out.println("Not a Valid Number"); 
+		}
+        catch(Exception e) {
+        	System.out.println(e.getStackTrace()); 
+        }
 		
 
 	}

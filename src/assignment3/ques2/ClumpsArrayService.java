@@ -1,15 +1,15 @@
 package assignment3.ques2;
 
-public class Service {
+public class ClumpsArrayService {
 	
 	/**
 	 * calculate the number of count clumps in array
 	 * @param countClumps
-	 * @return
+	 * @return the count of 2 or more adjacent elements of the same value
 	 */
-	public int numberOfClumps(int countClumps[]) {
+	public int numberOfClumps(int [] countClumps) {
 		
-       
+	
 		
 		int firstIndex = 0,
 		    secondIndex = 1,

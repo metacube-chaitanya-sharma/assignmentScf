@@ -2,28 +2,28 @@ package assignment3.ques1;
 
 import java.util.ArrayList;
 
-public class Service {
+public class MirrorSectionService {
 	
 	/**
-	 * 
+	 * Method reverse the array
 	 * @param nums
-	 * @return
+	 * @return it return the reverseArray 
 	 */
-	public ArrayList<Integer> reverseArray(ArrayList<Integer> nums) {
+	public ArrayList<Integer> reverseArray(ArrayList<Integer> nums , int size) {
 		
-		ArrayList<Integer> arr = new ArrayList<Integer>(nums.size());
+		ArrayList<Integer> arr = new ArrayList<Integer>(size);
 		
-		   for (int pos = nums.size()-1; pos >0; pos--) {
-		      arr.add(pos , nums.get(pos));
+		   for (int pos = nums.size()-1; pos >=0; pos--) {
+		      arr.add(nums.get(pos));
 		   }
 		   return arr;
 	
 }
 	/**
-	 * 
-	 * @param reverseArray
+	 * check that both array are equal or not 
 	 * @param newArray
-	 * @return
+	 * @param reverseArray 
+	 * @return check that both array are equal or not 
 	 */
 	public boolean check(ArrayList<Integer>  reverseArray , ArrayList<Integer>  newArray) {
 		
@@ -40,26 +40,28 @@ public class Service {
 	
 	
 	/**
-	 * 
+	 * Mirror section in an array is a group of contiguous elements
 	 * @param arr
 	 * @param size
-	 * @return
+	 * @return Mirror section in an array is a group of contiguous elements 
+	 * such that somewhere in the array, the same group appears in reverse order
 	 */
 	public int maxMirror(ArrayList<Integer> arr, int size) {
+		
 		
 		 for(int window = size; window >= 1; window--){
 			 
 			 
-	            for(int i=0; i<size-window+1; i++){
+	            for(int index=0; index<size-window+1; index++){
 	            	
 	            	
 	                ArrayList<Integer> toBeChecked = new ArrayList<Integer>();
 	                
 	                for(int j=0; j<window; j++){
-	                    toBeChecked.add(arr.get(i+j));
+	                    toBeChecked.add(arr.get(index+j));
 	                }
 	                
-	                toBeChecked = reverseArray(toBeChecked);
+	                toBeChecked = reverseArray(toBeChecked , size);
 	                for(int k=0; k<size-window+1; k++){  
 	                	
 	                    ArrayList<Integer> toBeCompared = new ArrayList<Integer>();             
@@ -74,7 +76,7 @@ public class Service {
 	                }
 	           }  
 	       }
-	     return 0;
+	    return 0; 
 
 		}
 

@@ -2,7 +2,7 @@ package assignment3.ques3;
 
 import java.util.ArrayList;
 
-public class Service {
+public class RearrangedArrayService {
 	
 	/**
 	 * rearranges the array in such a way that the X is not moved 
@@ -43,18 +43,32 @@ public class Service {
 			System.out.println("Not enter the last value as the X"); 
 		}
 		
+		try {
+			
+			for(int index = 0; index<fixXY.size()-1; index++) { 
+				
+				if(fixXY.get(index) == fixXY.get(index+1)) {
+					if(fixXY.get(index) == X) {
+						throw new AssertionError();
+					}
+				}
+			}
+		}catch(AssertionError e) {
+			System.out.println("two adjacents X values are there"); 
+		}
+		
 		
 		
 		int ans=0;
 		
-		  for(int i=0; i< fixXY.size() ; i++) {
+		  for(int index=0; index< fixXY.size() ; index++) {
 		     for(int j=0;j<fixXY.size() ; j++) {
 
-		     if(fixXY.get(i)== Y && fixXY.get(j)== X)
+		     if(fixXY.get(index)== Y && fixXY.get(j)== X)
 		     {
 		      ans = fixXY.get(j+1);
-		      fixXY.set(j+1, fixXY.get(i));	
-		      fixXY.set(i , ans);
+		      fixXY.set(j+1, fixXY.get(index));	
+		      fixXY.set(index , ans);
 		     }
 		     
 		     }

@@ -15,23 +15,28 @@ public class MirrorSection {
 		
         try {
 			
-			if(len <= 0)
+			if(len <= 0 )
 				throw new AssertionError(); 
+			
+			ArrayList<Integer> inputArray = new ArrayList<Integer>();
+			
+			for(int index=0; index<len; index++) {
+				
+				System.out.println("enter the element "+index);
+			    inputArray.add(sc.nextInt());
+								
+			}
+			
+			MirrorSectionService service = new MirrorSectionService();
+			System.out.println(service.maxMirror(inputArray , len)); 
+			
+			
         }catch(AssertionError e) {
-			System.out.println("Size must be greater than 0"); 
-		}
-		
-		ArrayList<Integer> inputArray = new ArrayList<Integer>();
-		
-		for(int index=0; index<len; index++) {
-			
-			System.out.println("enter the element "+index);
-			inputArray.add(sc.nextInt()); 
-			
-		}
-		
-		Service service = new Service();
-		System.out.println(service.maxMirror(inputArray , len)); 
+			System.out.println("Not a valid number"); 
+        }
+        catch(Exception e) {
+        	System.out.println(e.getStackTrace());
+        }
 
 	}
 

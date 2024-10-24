@@ -1,6 +1,6 @@
 package assignment3.ques4;
 
-public class Service {
+public class SplitArrayService {
 	
 	/**
 	 * Return the index if there is a place to split the input array so that
@@ -10,13 +10,15 @@ public class Service {
 	 * @return split index
 	 */
 	public int splitIndex(int splitArray[]) {
+	
+		
 		int sum =0; 
 		for(int index=0; index<splitArray.length; index++) {
 			
 			sum += splitArray[index];
 		}
 		
-		if(sum < 0) {
+		if(sum < 0 || sum%2 != 0) {
 			return -1; 
 			
 		}else {

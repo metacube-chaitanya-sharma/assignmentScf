@@ -12,29 +12,31 @@ public class ClumpsArray {
 		Scanner sc  = new Scanner(System.in);
 		
 		System.out.println("Enter the size of array");
-		int len = sc.nextInt();	
+		int len = sc.nextInt();
 		
 		try {
 			
 			if(len <= 0)
 				throw new AssertionError(); 
 			
+			int [] inputArray = new int[len];
+			for(int index=0; index<len; index++) {
+				
+				System.out.println("enter the element "+index);
+				inputArray[index] = sc.nextInt();			
+			}
+			
+			
+			ClumpsArrayService service = new ClumpsArrayService();
+			System.out.println("count Clumps " + service.numberOfClumps(inputArray));
+			
 		}
 		catch(AssertionError e) {
-			System.out.println("Size must be greater than 0"); 
+			System.out.println("Not a valid number"); 
 		}
 		
 		
-		int [] inputArray = new int[len];
-		for(int index=0; index<len; index++) {
-			
-			System.out.println("enter the element "+index);
-			inputArray[index] = sc.nextInt();			
-		}
-		
-		
-		Service service = new Service();
-		System.out.println("count Clumps " + service.numberOfClumps(inputArray));
+
 		
 
 	}
