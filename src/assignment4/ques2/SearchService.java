@@ -2,18 +2,34 @@ package assignment4.ques2;
 
 public class SearchService {
 	
-	public int linear(int arr[] , int num , int size , int i) {
+	/**
+	 * 
+	 * @param arr
+	 * @param num
+	 * @param size
+	 * @param i
+	 * @return
+	 */
+	public int linear(int arr[] , int num , int size , int index) {
 		
-		if(i>size-1) {
+		if(index>size-1) {
 			return -1; 
 		}
 		
-		if(arr[i] == num) {
-			return i; 
+		if(arr[index] == num) {
+			return index; 
 		}
-		return linear(arr , num , size ,i+1);
+		return linear(arr , num , size ,index+1);
 	}
 	
+	/**
+	 * 
+	 * @param arr
+	 * @param num
+	 * @param startIndex
+	 * @param endIndex
+	 * @return 
+	 */
 	public int binary(int arr[] , int num , int startIndex  , int endIndex ) {
 		
 		
@@ -37,6 +53,13 @@ public class SearchService {
 		
 	}
 	
+	/**
+	 * 
+	 * @param arr
+	 * @param numberToFind
+	 * @param size
+	 * @return the index of the element to find
+	 */
 	public int linearSearch(int arr[] , int numberToFind , int size ) {
 		
 		return linear(arr ,numberToFind , size , 0);
@@ -44,6 +67,13 @@ public class SearchService {
 		
 	}
 	
+	/**
+	 * 
+	 * @param arr
+	 * @param numberToFind
+	 * @param size
+	 * @return the index of the element to find 
+	 */
 	public int binarySearch(int arr[] , int numberToFind , int size) {
 		
 		
