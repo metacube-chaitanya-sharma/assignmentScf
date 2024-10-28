@@ -56,12 +56,18 @@ public class Main {
 		
 		
 			
-			System.out.println(inputArr);
+	    System.out.print("inputArr1 ->");
+		p1.printArray(inputArr);
+		System.out.print("inputArr2 ->");
+		p1.printArray(new ArrayList<Integer>(Arrays.asList(1,2,3,5)));
 	
 		System.out.println("degree ->" +p1.degree());
 		System.out.println("the value of the polynomial for given variable ->" +p1.evaluate(5));
-		System.out.println("sum -> " +p1.addPoly(p1, p2)); 
-		System.out.println("multiply -> " +p1.multiplyPoly(p1, p2));
+		System.out.print("sum -> ");
+		p1.printArray(p1.addPoly(p1, p2));
+		
+		System.out.print("multiply -> ");
+		p1.printArray(p1.multiplyPoly(p1, p2));
 		
 		
 		

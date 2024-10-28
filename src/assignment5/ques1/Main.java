@@ -8,7 +8,7 @@ public class Main {
 		// TODO Auto-generated method stub
 
 		IntSet set = new IntSet(new int[] {11, 1, 13, 21, 3, 7});
-		IntSet s = new IntSet(new int[] {11, 3, 7,3,1});
+		IntSet s = new IntSet(new int[] {11, 7,3,1});
 		
 		
 		System.out.println(set.isMember(4)); 
