@@ -11,12 +11,15 @@ public class Main {
 		IntSet s = new IntSet(new int[] {11, 3, 7,3,1});
 		
 		
-//		System.out.println(set.isMember(4)); 
+		System.out.println(set.isMember(4)); 
 		System.out.println(set.isSubSet(s));
 		System.out.println(set.union(s));
 		System.out.println(set.size());
 		System.out.println(set.isMember(13));
 		System.out.println(s.size()); 
+	    System.out.println(s.getComplement());
+		
+	
 		
 		
 		

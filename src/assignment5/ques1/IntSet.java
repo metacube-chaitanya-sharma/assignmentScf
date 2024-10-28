@@ -14,13 +14,13 @@ final public class IntSet {
 
 
     /**
-     * 
+     * Method is used to find that a number is a member or not
      * @param x
      * @return
      */
 	public boolean isMember(int x) {
 		
-        for(int index=0; index<1000; index++) {
+        for(int index =0; index<arr.length; index++) {
 			
 			if(this.arr[index] == x) {
 				return true; 
@@ -31,7 +31,7 @@ final public class IntSet {
 	}
 	
 	/**
-	 * 
+	 * Method is used to find the size of the set
 	 * @return
 	 */
 	public int  size() {
@@ -41,7 +41,7 @@ final public class IntSet {
 	}
 	
 	/**
-	 * 
+	 * Method is used to find the Subset 
 	 * @param s
 	 * @return
 	 */
@@ -66,22 +66,20 @@ final public class IntSet {
 	}
 	
 	/**
-	 * 
+	 * Method is used to take the complement of the set
 	 * @return
 	 */
-	public int[] getComplement() {
+	public ArrayList<Integer> getComplement() {
 		
 		
-		int [] res = new int[100];
+		ArrayList<Integer>  res = new ArrayList<Integer>();
 		
-		for(int index =0; index < 100; index++) {
+		for(int index =1; index <= 1000; index++) {
 			
-			for(int ele : this.arr) {
-				
-				if(ele != index) {
-					res[index] = index; 
-				}
+			if(!isMember(index)) {
+				res.add(index);
 			}
+		
 		}
 		
 		return res; 
@@ -90,7 +88,7 @@ final public class IntSet {
 	}
 	
 	/**
-	 * 
+	 * Method is used to calculate the union of the two set
 	 * @param s
 	 * @return
 	 */
