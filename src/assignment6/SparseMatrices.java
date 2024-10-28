@@ -13,7 +13,7 @@ final class SparseMatrices {
 	}
 	
 	/**
-	 * 
+	 * Method is used to print the matrix
 	 * @param res
 	 */
 	public void printMatrix(int[][] res) {
@@ -28,7 +28,7 @@ final class SparseMatrices {
 	}
 	
 	/**
-	 * 
+	 * Method is used to return the transpose matrix of inputArray
 	 * @return
 	 */
 	public int[][] transpose(){
@@ -48,7 +48,7 @@ final class SparseMatrices {
 	}
 	
 	/**
-	 * 
+	 * Method is used to find the A = A^T
 	 * @return
 	 */
 	public boolean symmetricMatrix() {
@@ -73,7 +73,7 @@ final class SparseMatrices {
 	}
 	
 	/**
-	 * 
+	 * Method is used to find the sum of two matrices
 	 * @param inputArray
 	 * @return
 	 */
@@ -97,18 +97,23 @@ final class SparseMatrices {
 				}
 			}
 		
+			printMatrix(res);
 		}
 		catch(AssertionError e) {
 			System.out.println("Size must be same");
+			 
 		}
 		catch(Exception e) {
 			System.out.println(e.getStackTrace());
 		}
 		
-		printMatrix(res);
 		
 	}
 	
+	/**
+	 * Method is used to multiply the two matrices
+	 * @param inputArray
+	 */
 	public void  multiplication(SparseMatrices inputArray){
 		
 		int row1 = arr.length; 
@@ -140,13 +145,13 @@ final class SparseMatrices {
 				}
 			}
 			
+            printMatrix(res);
 			
 		}
 		catch(AssertionError e) {
 			System.out.println("enter the valid matrices");
 		}
 		
-		printMatrix(res);
 	}
 		
 		
