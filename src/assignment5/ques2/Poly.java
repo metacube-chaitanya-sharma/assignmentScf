@@ -1,6 +1,7 @@
 package assignment5.ques2;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 final public class Poly {
 	
@@ -72,21 +73,35 @@ final public class Poly {
 		int len1 = p1.arr.size();
 		int len2 = p2.arr.size(); 
 		
+		HashMap<Integer , Integer>  freq = new HashMap<Integer , Integer>();
+		
+		for(int index=1; index<len1; index += 2) {
+			
+			if(!freq.containsKey(p1.arr.get(index)))
+			freq.put(p1.arr.get(index), freq.getOrDefault(p1.arr.get(index) , 0)  + p1.arr.get(index-1)); 
+			else
+				freq.put(p1.arr.get(index), freq.get(p1.arr.get(index))  + p1.arr.get(index-1)); 
+				
+			
+		}
+		
+		for(int index=1; index<len2; index += 2) {
+			
+			if(!freq.containsKey(p2.arr.get(index)))
+				freq.put(p2.arr.get(index), freq.getOrDefault(p2.arr.get(index) , 0)  + p2.arr.get(index-1));
+			else
+				freq.put(p2.arr.get(index), freq.get(p2.arr.get(index))  + p2.arr.get(index-1)); 
+		}
+		
+		
+		
 		ArrayList<Integer> res = new ArrayList<Integer>();
 		
-		int sum =0; 
 		
-		for(int index = 1; index<len1 ; index += 2) {
+		for(HashMap.Entry<Integer , Integer> it : freq.entrySet()) {
 			
-			 sum =0; 
-			for(int j = 1; j<len2; j += 2) {
-				
-				if(p1.arr.get(index) == p2.arr.get(j)) {
-					sum += p1.arr.get(index-1) + p2.arr.get(j-1);
-					res.add(sum);
-					res.add(p1.arr.get(index));
-				}
-			}
+			res.add(it.getValue()); 
+			res.add(it.getKey()); 
 		}
 
 		return res;
