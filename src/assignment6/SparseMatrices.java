@@ -1,14 +1,22 @@
 package assignment6;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+
 import junit.framework.AssertionFailedError;
 
-final class SparseMatrices {
+public final class SparseMatrices {
 	
 	private int[][] arr; 
+	private int rowSize; 
+	private int colSize; 
 
-	public SparseMatrices(int[][] arr) {
+	public SparseMatrices(int[][] arr , int rowSize , int colSize) {
 		// TODO Auto-generated constructor stub
 		this.arr =arr; 
+		this.rowSize = rowSize; 
+		this.colSize = colSize; 
 		
 	}
 	
@@ -17,6 +25,7 @@ final class SparseMatrices {
 	 * @param res
 	 */
 	public void printMatrix(int[][] res) {
+		
 		
           for(int index =0; index<res.length; index++) {
 			
@@ -27,37 +36,85 @@ final class SparseMatrices {
 		}
 	}
 	
+	public void printCompactMatrix(int [][] compactMatrix , int size) {
+		
+		for (int i = 0; i < 3; i++) 
+        {
+            for (int j = 0; j < size; j++) 
+            {
+            	
+                System.out.printf("%d ", compactMatrix[i][j]);
+                
+            }
+            
+            System.out.printf("\n");
+        }
+	}
+	
+
+	
+	/**
+	 * 
+	 * @param inputArr
+	 * @param size
+	 * @return
+	 */
+	public int[][] compactMatrix(int [][] inputArr , int size){
+		
+               int compactMatrix[][] = new int[3][size];
+		
+		int k = 0;
+        for (int i = 0; i < rowSize; i++) 
+        {
+            for (int j = 0; j < colSize; j++)
+            {
+                if (inputArr[i][j] != 0) 
+                {
+                    compactMatrix[0][k] = i;
+                    compactMatrix[1][k] = j;
+                    compactMatrix[2][k] = inputArr[i][j];
+                    k++;
+                }
+            }
+        }
+        return compactMatrix; 
+	}
+	
+	
+	
 	/**
 	 * Method is used to return the transpose matrix of inputArray
 	 * @return
 	 */
-	public int[][] transpose(){
+	public int[][] transpose(int [][] compactMatrix , int size){
+
 		
-		int [][] res = new int[arr[0].length][arr.length];
+		 int [][] ans = new int[colSize][rowSize];
+		 
+		 
+	    
+	            for (int j = 0; j < size; j++) 
+	            {
+	                                         
+              ans[compactMatrix[1][j]][compactMatrix[0][j]] = compactMatrix[2][j]; 
+	                
+	                
+	            }
 		
-		for(int index=0; index<arr.length; index++) {
-			
-			for(int innerIndex=0;  innerIndex<arr[0].length;  innerIndex++) {
-				
-				res[innerIndex][index] = arr[index][innerIndex];
-				
-			}
-		}
-		
-		return res; 
+		return ans; 
 	}
 	
 	/**
 	 * Method is used to find the A = A^T
 	 * @return
 	 */
-	public boolean symmetricMatrix() {
+	public boolean symmetricMatrix(int[][] compactMatrix , int size) {
 		
 		if(arr.length != arr[0].length){
 			return false; 
 		}
 		
-		int [][] res = transpose();
+		int [][] res = transpose(compactMatrix ,size);
 		
 		for(int index =0; index <arr.length; index++) {
 			
@@ -77,52 +134,49 @@ final class SparseMatrices {
 	 * @param inputArray
 	 * @return
 	 */
-	public void additionOfMatrix(SparseMatrices inputArray){
+	public int[][] additionOfMatrix(int [][] compactMatrix1 , int [][] compactMatrix2 , int size1 , int size2){
 		
-		int [][] res = new int[arr.length][arr[0].length];
+		int [][] ans = new int[rowSize][colSize];
 		
-		try {
-			
-		
-		
-		if(arr.length != inputArray.arr.length && arr[0].length != inputArray.arr[0].length) {
-		           throw new AssertionError(); 
-		}
-			
-			for(int index =0; index <arr.length; index++) {
-				
-				for(int innerIndex =0; innerIndex<arr[0].length; innerIndex++) {
-					
-					res[index][innerIndex] = arr[index][innerIndex] + inputArray.arr[index][innerIndex]; 
-				}
-			}
-		
-			printMatrix(res);
-		}
-		catch(AssertionError e) {
-			System.out.println("Size must be same");
-			 
-		}
-		catch(Exception e) {
-			System.out.println(e.getStackTrace());
-		}
-		
+            for (int j = 0; j < size1; j++) 
+            {
+                
+             ans[compactMatrix1[0][j]][compactMatrix1[1][j]] = compactMatrix1[2][j];
+                
+               
+                
+            }
+       
+            for (int j = 0; j < size2; j++) 
+            {
+            	
+                ans[compactMatrix2[0][j]][compactMatrix2[1][j]] = 
+                		ans[compactMatrix2[0][j]][compactMatrix2[1][j]] + compactMatrix2[2][j];
+                
+                          
+            }
+      
+		return ans; 
 		
 	}
 	
+	
+
 	/**
 	 * Method is used to multiply the two matrices
 	 * @param inputArray
 	 */
-	public void  multiplication(SparseMatrices inputArray){
+	public int[][]  multiplication(SparseMatrices sparse ,int [][] compactMatrix1 , int [][] compactMatrix2 ){
 		
-		int row1 = arr.length; 
-		int col1 = arr[0].length; 
+		int row1 = rowSize; 
+		int col1 = colSize; 
 		
-		int row2 = inputArray.arr.length; 
-		int col2 = inputArray.arr[0].length; 
+		int row2 = sparse.rowSize; 
+		int col2 = sparse.colSize; 
 		
-		int [][] res = new int[row1][col2];
+		
+		
+		int [][] ans = new int[row1][col2];
 		
 		try {
 			
@@ -130,35 +184,32 @@ final class SparseMatrices {
 				 throw new AssertionError(); 
 			}
 			
-					
-			
-            for(int index =0; index < row1; index++) {
-				
-				for(int j =0; j<col2; j++) {
-					
-					for(int k =0; k<row2; k++) {
-						
-
-						res[index][j] += arr[index][k] * inputArray.arr[k][j]; 
-					}
-					
-				}
-			}
-			
-            printMatrix(res);
+			        for (int i = 0; i< compactMatrix1[0].length; i++) {
+			        	  int rowA = compactMatrix1[0][i]; 
+			        	  int colA = compactMatrix1[1][i]; 
+			        	  int valueA = compactMatrix1[2][i]; 
+			        	  
+			        	for(int j =0; j< compactMatrix2[0].length; j++) {
+			        		
+			        		 int rowB = compactMatrix2[0][j]; 
+				        	  int colB = compactMatrix2[1][j]; 
+				        	  int valueB = compactMatrix2[2][j];
+				        	  
+				        	  if(colA == rowB) {
+				        		  ans[rowA][colB] += valueA * valueB; 
+				        	  }
+			        		
+			        	}
+			        }
+			        	
+			      
 			
 		}
 		catch(AssertionError e) {
 			System.out.println("enter the valid matrices");
 		}
+		return ans; 
 		
 	}
 		
-		
-		
-		
-		
-
-	
-
 }
