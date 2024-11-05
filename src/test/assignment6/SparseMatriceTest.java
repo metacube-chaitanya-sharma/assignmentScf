@@ -116,6 +116,51 @@ public class SparseMatriceTest {
 	@Test
 	public void multiplication() {
 		
+		int [][] inputArray1 = {{2, 4}, {3, 4}};
+		int [][] inputArray2 = {{1, 2}, {1, 3}};
+		
+		
+		SparseMatrices sparse1 = new SparseMatrices(inputArray1 , inputArray1.length , inputArray1[0].length);
+		SparseMatrices sparse2 = new SparseMatrices(inputArray2 , inputArray2.length , inputArray2[0].length);
+		
+
+		  int size1 =0; 
+		  for(int row =0; row<inputArray1.length; row++) {
+				for(int col =0; col<inputArray1[0].length; col++) {
+					
+					
+					if(inputArray1[row][col] !=0) {
+						size1++; 
+						
+					}
+				}
+				
+			}
+		  
+		  int size2 =0; 
+		  for(int row =0; row<inputArray1.length; row++) {
+				for(int col =0; col<inputArray1[0].length; col++) {
+					
+					
+					if(inputArray1[row][col] !=0) {
+						size2++; 
+						
+					}
+				}
+				
+			}
+		
+		
+		 int [][] compactMatrix1 = sparse1.compactMatrix(inputArray1, size1);
+		  int [][] compactMatrix2 = sparse1.compactMatrix(inputArray2, size2);
+		
+		  
+		  int [][] expectedResult1 =   {{6, 16}, {7, 18}};
+		  
+          int [][] actualResult1 = sparse1.multiplication(sparse2, inputArray1, inputArray2); 
+		  Assertions.assertArrayEquals(expectedResult1, actualResult1);
+
+		
 	}
 	
 	
