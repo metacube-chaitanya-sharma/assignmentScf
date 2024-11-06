@@ -1,5 +1,7 @@
 package main.java;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,12 +11,13 @@ class HelloWorld {
     public static void main(String[] args) {
        
     
-       HashMap<String , Integer> mp = new HashMap<String ,Integer>();
+       HashMap<String , Timestamp> mp = new HashMap<String ,Timestamp>();
        
-       mp.put("Square", 2);
-       mp.put("circle" , 3);
-       mp.put("triangle" , 4);
-       mp.put("rectangle" , 5);
+       mp.put("Square",  Timestamp.from(Instant.now()));
+       mp.put("circle" , Timestamp.from(Instant.now()));
+       mp.put("triangle" , Timestamp.from(Instant.now()));
+       mp.put("rectangle" , Timestamp.from(Instant.now()));
+     
        
        App o = new App();
        List<String> ans = o.sortByValue(mp);

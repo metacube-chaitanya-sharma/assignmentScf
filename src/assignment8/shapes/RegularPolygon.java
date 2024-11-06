@@ -1,5 +1,7 @@
 package assignment8.shapes;
 
+
+
 import java.util.List;
 
 import assignment8.Point;
@@ -19,31 +21,47 @@ public class RegularPolygon implements Shape {
 	}
 	
 	
+	public int distance(int x1, int y1 , int x2 ,int y2 ) {
+		
+		return (int ) Math.sqrt(Math.pow((x2 - x1), 2)
+                + Math.pow((y2 - y1), 2));
+		
+	}
+	
+	
 	@Override
 	public int getPerimeter() {
 		// TODO Auto-generated method stub
-		int sum =0; 
-		for(Integer index : parameters) {
-			sum += index; 
-		}
-		return sum; 
+		 
+		int noOfSides = parameters.size()/2 + 1; 
+		int distanceOfSide = distance(point.getX() , point.getY() 
+				, parameters.get(0) , parameters.get(1));
+		
+	
+		return noOfSides * distanceOfSide; 
+		
+	}
+	
+	public int getTrianglesArea(int x1, int y1, int x2, int y2,
+            int x3, int y3) {
+		
+		return (int) Math.abs((x1*(y2-y3) + x2*(y3-y1)+
+                x3*(y1-y2))/2);
 	}
 	
 	@Override
 	public int getArea() {
 		// TODO Auto-generated method stub
 		
-		int perimeter = getPerimeter();
+	      int area = 0;
+	         for(int i=0; i<parameters.size()-2; i=i+2){
+	        area += getTrianglesArea(point.x, point.y, parameters.get(i), parameters.get(i+1), parameters.get(i+2), parameters.get(i+3));
+	         }
+
+	        return (int)area; 
 		
-		int numberOfSide = parameters.size();
-		int lengthOfOneSide = parameters.get(1);
-		double degree = 180/numberOfSide; 
 		
-		
-		double apothem = (lengthOfOneSide) / (2 * Math.tan(degree));
-		double area = (perimeter * apothem) /2; 
-		
-		return (int) area; 
+	 
 	}
 
 	@Override
@@ -52,10 +70,29 @@ public class RegularPolygon implements Shape {
 		
 		return point; 
 	}
+	
 
 	@Override
-	public boolean isPointEnclosed() {
+	public boolean isPointEnclosed(Point checkPoint) {
 		// TODO Auto-generated method stub
+		
+		int  initialArea = getTrianglesArea(checkPoint.x, checkPoint.y, point.x, point.y, parameters.get(0), parameters.get(1));
+		
+        int remaingArea = 0;
+        for(int i=2; i<parameters.size()-1; i=i+2){
+           remaingArea += getTrianglesArea(checkPoint.x, checkPoint.y,
+        		   parameters.get(i-2), parameters.get(i-1), parameters.get(i),parameters.get(i+1));
+        }
+        
+        int lastArea = getTrianglesArea(checkPoint.x , checkPoint.y , point.x , point.y , parameters.get(parameters.size()-2) , parameters.get(parameters.size()-1));
+        int totalArea = getArea();
+        
+        if(initialArea + remaingArea + lastArea == totalArea){
+           return true;
+        }
+        return false;
+	
+		
 		  
 	}
 	

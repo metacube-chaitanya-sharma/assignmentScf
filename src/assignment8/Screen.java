@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class Screen  {
 	
@@ -20,7 +18,7 @@ public class Screen  {
 	HashMap<Shape , Integer> areaMap = new HashMap<Shape , Integer>();
 	HashMap<Shape , Integer> perimeterMap = new HashMap<Shape , Integer>();
 	HashMap<Shape , Integer> originDistanceMap = new HashMap<Shape , Integer>();
-	TreeMap<Timestamp , Shape> timeStampMap = new TreeMap<Timestamp , Shape>();
+	HashMap<Shape , Timestamp> timeStampMap = new HashMap<Shape ,Timestamp>();
 	
 	
 
@@ -39,6 +37,10 @@ public class Screen  {
 	public int getyMax() {
 		return yMax;
 	}
+	
+	public List<Shape> showShapes() {
+		return listOfShape; 
+	}
 
 
 	public boolean possibleToAdd(Shape shape) {
@@ -53,25 +55,28 @@ public class Screen  {
 		
 		if(ShapeType.SQUARE.equals(shapeType)) {
 			
+//			System.out.println("Square");
 			int originX = point.getX();
 			int originY = point.getY();
 			
 			int maxX = originX +  parameter.get(0);
 			int maxY = originY + parameter.get(0);
+
 			
-			if(xMax > maxX && yMax > maxY) {
+			if(xMax >= maxX && yMax >= maxY) {
+				
 				return true; 
 			}
 		}
 		else if(ShapeType.RECTANGLE.equals(shapeType)) {
-			
+//			System.out.println("Rectangle");
 			int originX = point.getX();
 			int originY = point.getY();
 			
 			int maxX = originX +  parameter.get(0);
 			int maxY = originY + parameter.get(1);
 			
-			if(xMax > maxX && yMax > maxY) {
+			if(xMax >= maxX && yMax >= maxY) {
 				return true; 
 			}
 			
@@ -85,7 +90,7 @@ public class Screen  {
 			int maxX = originX +  parameter.get(0);
 			int maxY = originY + parameter.get(0);
 			
-			if(xMax > maxX && yMax > maxY) {
+			if(xMax >= maxX && yMax >= maxY) {
 				return true; 
 			}
 			
@@ -102,13 +107,36 @@ public class Screen  {
 			int y2 = parameter.get(3);
 			
 			
-			if(xMax > originX && yMax > originY && xMax > x1 && yMax > y1 && xMax > x2 && yMax > y2) {
+			if(xMax >= originX && yMax >= originY && xMax >= x1 && yMax >= y1 && xMax >= x2 && yMax >= y2) {
 				return true; 
 			}
 			
 			
 		}
 		else if(ShapeType.REGULARPOLYGON.equals(shapeType)) {
+			
+			int minimizeX = point.x; 
+			int minimizeY = point.y ; 
+			
+			int extremeX = point.x; 
+			int extremeY = point.y; 
+			
+			
+			
+			
+			for(int i=0; i<parameter.size(); i += 2) {
+				
+				minimizeX = Math.min(minimizeX, parameter.get(i));
+				minimizeY = Math.min(minimizeY, parameter.get(i+1));
+	            extremeX = Math.max(extremeX, parameter.get(i));
+	            extremeY = Math.max(extremeY, parameter.get(i+1));
+				
+			}
+			
+			if(minimizeX > 0 && minimizeY > 0 && xMax > extremeX && yMax > extremeY) {
+				return true; 
+			}
+			
 			
 		}
 		
@@ -130,7 +158,7 @@ public class Screen  {
 			 Timestamp instant = Timestamp.from(Instant.now()); 
 			 areaMap.put(shape, shape.getArea());
 			 perimeterMap.put(shape, shape.getPerimeter());
-			 timeStampMap.put(instant , shape);
+			 timeStampMap.put(shape, instant);
 			 
 			 Point origin = shape.getOrigin();
 			 int originX = origin.getX();
@@ -163,16 +191,28 @@ public class Screen  {
 	
 	public void deleteAllShape(ShapeType shapeType) {
 		// TODO Auto-generated method stub
+		       
 		
-		for(Shape checkShape : listOfShape) {
-			
-			if(checkShape.getShapeType() == shapeType) {
-				listOfShape.remove(checkShape); 
+		int len = listOfShape.size(); 
+		
+		List<Shape> ans = new ArrayList<Shape>(); 
+		
+			for(int index =0; index<len; index++) {
+				
+				if(listOfShape.get(index).getShapeType() != shapeType) {
+					
+					ans.add(listOfShape.get(index));
+				}
 			}
+			
+			listOfShape = ans; 
+			ans.clear();
+			
+
 		}
 		
 
-	}
+	
 	
 	
 	public  List<Shape> sortByValue(HashMap<Shape, Integer> hm)
@@ -192,6 +232,31 @@ public class Screen  {
 	        	 for(HashMap.Entry<Shape, Integer> entry1 : hm.entrySet()) {
 	             	
 	             	if(entry1.getValue() == it) {
+	             		ans.add(entry1.getKey()); 
+	             	}
+	             }
+	        }
+	        return ans; 
+    }
+	
+	public  List<Shape> sortByValueForTimeStamp(HashMap<Shape, Timestamp> hm)
+    {
+
+        
+	      List<Shape> ans = new ArrayList<Shape>();
+	      List<Timestamp> sortedValue = new ArrayList<Timestamp>();
+	    
+	        for(HashMap.Entry<Shape, Timestamp> entry1 : hm.entrySet()) {
+	        	sortedValue.add(entry1.getValue());
+	        }
+	        
+	        Collections.sort(sortedValue); 
+	        
+	        for(Timestamp it : sortedValue) {
+	        	 for(HashMap.Entry<Shape, Timestamp> entry1 : hm.entrySet()) {
+	             	
+	             	if(entry1.getValue() == it) {
+	             		
 	             		ans.add(entry1.getKey()); 
 	             	}
 	             }
@@ -225,10 +290,7 @@ public class Screen  {
 		// TODO Auto-generated method stub
 		
 		List<Shape> ans = new ArrayList<Shape>();
-		
-		for(Shape value : timeStampMap.values()) {
-			ans.add(value);
-		}
+		ans = sortByValueForTimeStamp(timeStampMap);
 	
        return ans; 
 		
