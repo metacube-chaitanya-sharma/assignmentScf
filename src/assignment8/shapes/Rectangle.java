@@ -4,6 +4,7 @@ import java.util.List;
 
 import assignment8.Point;
 import assignment8.Shape;
+import assignment8.ShapeType;
 
 public class Rectangle implements Shape {
 	
@@ -43,10 +44,36 @@ public class Rectangle implements Shape {
 	}
 
 	@Override
-	public boolean isPointEnclosed() {
+	public boolean isPointEnclosed(Point checkPoint) {
 		// TODO Auto-generated method stub
 		
+		int originX = point.getX();		
+		int originY = point.getY();	
+		
+	
+		
+		int originDistanceX = point.getX() + parameters.get(0);
+		int originDistanceY = point.getY() + parameters.get(1);
+		
+		
+		int p1 = checkPoint.getX();
+		int p2 = checkPoint.getY();
+		
+		if(originX < p1 && originY < p2 &&  originDistanceX > p1 && originDistanceY > p2 ) {
+			return true; 
+		}
 		return false; 
+	}
+	
+	@Override
+	public ShapeType getShapeType() {
+		// TODO Auto-generated method stub
+		return ShapeType.RECTANGLE;
+	}
+	
+	public List<Integer> getParameters() {
+		
+		return parameters; 
 	}
 
 }

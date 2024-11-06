@@ -4,6 +4,7 @@ import java.util.List;
 
 import assignment8.Point;
 import assignment8.Shape;
+import assignment8.ShapeType;
 
 public class Triangle implements Shape {
 	
@@ -16,27 +17,55 @@ public class Triangle implements Shape {
 		this.point = point;
 		this.parameters = parameters;
 	}
+	
+	public int distance(int x1, int y1 , int x2 ,int y2 ) {
+		
+		return (int ) Math.sqrt(Math.pow((x2 - x1), 2)
+                + Math.pow((y2 - y1), 2));
+		
+	}
 
 	@Override
 	public int getArea() {
 		// TODO Auto-generated method stub
 		
-		int height = parameters.get(0);
-		int weight = parameters.get(1);
 		
-		return (int) (0.5 * height * weight); 
+		
+		int x1 = point.getX(); 
+		int y1 = point.getY();
+		
+		int x2 = parameters.get(0);
+		int y2 = parameters.get(1);
+		
+		int x3 = parameters.get(2);
+		int y3 = parameters.get(3);
+		
+		
+		
+		int area = (int) 0.5 * Math.abs(x1 * (y2 -y3) +  x2 * (y3 -y1) + x3 * (y1 - y2));
+		
+		return area; 
 	}
 
 	@Override
 	public int getPerimeter() {
 		// TODO Auto-generated method stub
 		
-		int height = parameters.get(0);
-		int weight = parameters.get(1);
-		int hypo = parameters.get(2);
+		int x1 = point.getX(); 
+		int y1 = point.getY();
+		
+		int x2 = parameters.get(0);
+		int y2 = parameters.get(1);
+		
+		int x3 = parameters.get(2);
+		int y3 = parameters.get(3);
+		
+		int lenght = distance(x1 ,y1 ,x2 , y2);
+		int weight = distance(x2 , y2 , x3 ,y3);
+		int hypo = distance(x3, y3 , x1, y1);
 		
 	
-		return height + weight + hypo; 
+		return lenght + weight + hypo; 
 	}
 
 	@Override
@@ -46,11 +75,59 @@ public class Triangle implements Shape {
 		return point; 
 		
 	}
+	
+	public int triangleArea(int x1, int y1, int x2, int y2,
+            int x3, int y3) {
+		
+		return (int) Math.abs((x1*(y2-y3) + x2*(y3-y1)+
+                x3*(y1-y2))/2);
+	}
 
 	@Override
-	public boolean isPointEnclosed() {
+	public boolean isPointEnclosed(Point checkPoint) {
+		
+		
+		int x = checkPoint.getX();
+		int y = checkPoint.getY();
+		
+		
+		int x1 = point.getX();
+		int y1 = point.getY();
+		
+		int x2 = parameters.get(0);
+		int y2 = parameters.get(1);
+		
+		int x3 = parameters.get(2);
+		int y3 = parameters.get(3);
+		
+		/* Calculate area of triangle ABC */
+        int A = triangleArea(x1, y1, x2, y2, x3, y3);
+        
+        /* Calculate area of triangle PBC */ 
+        int A1 = triangleArea(x, y, x2, y2, x3, y3);
+        
+        /* Calculate area of triangle PAC */ 
+        int A2 = triangleArea(x1, y1, x, y, x3, y3);
+        
+        
+        /* Calculate area of triangle PAB */  
+        int A3 = triangleArea(x1, y1, x2, y2, x, y);
+        
+        return (A == A1 + A2 + A3);
+		
+		
+		
+	}
+	
+	@Override
+	public ShapeType getShapeType() {
 		// TODO Auto-generated method stub
-		return false; 
+		return ShapeType.TRIANGLE;
+	}
+	
+	public List<Integer> getParameters() {
+		
+		return parameters; 
 	}
 
 }

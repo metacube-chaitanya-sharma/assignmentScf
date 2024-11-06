@@ -4,6 +4,7 @@ import java.util.List;
 
 import assignment8.Point;
 import assignment8.Shape;
+import assignment8.ShapeType;
 
 public class RegularPolygon implements Shape {
 	
@@ -55,8 +56,18 @@ public class RegularPolygon implements Shape {
 	@Override
 	public boolean isPointEnclosed() {
 		// TODO Auto-generated method stub
+		  
+	}
+	
+	@Override
+	public ShapeType getShapeType() {
+		// TODO Auto-generated method stub
+		return ShapeType.REGULARPOLYGON;
+	}
+	
+	public List<Integer> getParameters() {
 		
-		return false; 
+		return parameters; 
 	}
 
 }

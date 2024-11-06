@@ -1,6 +1,7 @@
 package assignment8;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -11,17 +12,22 @@ public class Main {
 //		String str = "SQUARE";
 		
 		
-		Screen screen = new RectangularScreen(5,8);
+		Screen screen = new Screen(5,8);
 		
-		List<Integer> parameters = new ArrayList<Integer>();
+		List<Integer> parameters = new ArrayList<Integer>(Arrays.asList(5));
+		
 		Point squarePoint = new Point(4,5);
 		
 		
 		Shape square = ShapeFactory.createShape(ShapeType.SQUARE , squarePoint, parameters);
 		
 		
-		screen.addShape(square);
+//		screen.addShape(square);
 //		screen.addShape(circle);
+		
+		int area = square.getArea(); 
+		
+		System.out.println(area);
 		
 		
 		

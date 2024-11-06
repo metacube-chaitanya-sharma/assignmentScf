@@ -1,15 +1,17 @@
 package assignment8.shapes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import assignment8.Point;
 import assignment8.Shape;
+import assignment8.ShapeType;
 
 public class Circle implements Shape {
 	
 	private Point point;
 	private List<Integer> parameters; 
+	
+	
 	
 
 	public Circle(Point point, List<Integer> parameters) {
@@ -44,20 +46,37 @@ public class Circle implements Shape {
 	}
 
 	@Override
-	public boolean isPointEnclosed() {
+	public boolean isPointEnclosed(Point checkPoint) {
 		// TODO Auto-generated method stub
 		
-		int minX = point.getX();
-		int minY = point.getY();
 		
-		int maxX = point.getX() + parameters.get(0);
-		int maxY = point.getY() + parameters.get(0);
+		int originX = point.getX();		
+		int originY = point.getY();	
+	
+		int radius = point.getX() + parameters.get(0);
 		
-		if(maxX > minX && maxY > minY) {
-			return true; 
+		
+		int distance = (int)  Math.sqrt(Math.pow((checkPoint.getX() - originX), 2)
+                + Math.pow((checkPoint.getY() - originY), 2));
+		
+		if(distance > radius) {
+			return false; 
 		}
-		return false; 
 		
+		return true; 
+
+		
+	}
+
+	@Override
+	public ShapeType getShapeType() {
+		// TODO Auto-generated method stub
+		return ShapeType.CIRCLE;
+	}
+	
+	public List<Integer> getParameters() {
+		
+		return parameters; 
 	}
 
 }
