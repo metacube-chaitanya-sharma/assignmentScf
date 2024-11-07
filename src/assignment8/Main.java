@@ -14,16 +14,21 @@ public class Main {
 		
 		Screen screen = new Screen(100,100);
 		
+		// we have to give the length of the side
 		List<Integer> squareParameters = new ArrayList<Integer>(Arrays.asList(3));
+		// we have to give the length of the radius
 		List<Integer> circleParameters = new ArrayList<Integer>(Arrays.asList(2));
+		// we have to give the length of the two sides of rectangle
 		List<Integer> rectangleParameters = new ArrayList<Integer>(Arrays.asList(5,2));
+		
+		
+		// gives the coordinates of the triangle and regularPolygon
 		List<Integer> triangleParameters = new ArrayList<Integer>(Arrays.asList(2,3,4,5,1,6));
-	List<Integer> regularPolygonParameters = new ArrayList<Integer>(Arrays.asList(4,10,9,7,11,2));
-//		List<Integer> regularPolygonParameters = new ArrayList<Integer>(Arrays.asList(4,5,7,8,6,2));
-//		List<Integer> regularPolygonParameters = new ArrayList<Integer>(Arrays.asList(0,3,3,3,3,0));
+	    List<Integer> regularPolygonParameters = new ArrayList<Integer>(Arrays.asList(4,10,9,7,11,2));
+
 		
 		
-		
+		// this point is the origin of the shape
 		Point squarePoint = new Point(2,3);
 		Point circlePoint = new Point(1,4);
 		Point rectanglePoint = new Point(2,3);
@@ -31,7 +36,7 @@ public class Main {
 		Point regularPolygonPoint = new Point(2,2);
 		
 		
-		
+		// From this we can create the different shapes
 		Shape square = ShapeFactory.createShape(ShapeType.SQUARE , squarePoint, squareParameters);
 		Shape circle = ShapeFactory.createShape(ShapeType.CIRCLE , circlePoint, circleParameters);
 		Shape circle1 = ShapeFactory.createShape(ShapeType.CIRCLE , circlePoint, circleParameters);
@@ -40,7 +45,7 @@ public class Main {
 		Shape regularPolygon = ShapeFactory.createShape(ShapeType.REGULARPOLYGON , regularPolygonPoint, regularPolygonParameters);
 		
 		
-		
+		// this is point for checking point is inside or not 
 //		Point squareCheckPoint = new Point(3,4);
 //		
 //		System.out.println(square.getArea());
@@ -49,7 +54,7 @@ public class Main {
 //		System.out.println(square.getPerimeter());
 //		System.out.println(square.isPointEnclosed(squareCheckPoint));
 		
-		
+//		this is point for checking point is inside or not 
 //		Point circleCheckPoint = new Point(2,3);
 //		
 //		System.out.println(circle.getArea());
@@ -60,7 +65,7 @@ public class Main {
 //		System.out.println(circle.isPointEnclosed(circleCheckPoint));
 		
 		
-		
+//		this is point for checking point is inside or not 
 //		Point rectangleCheckPoint = new Point(2,3);
 //		
 //		System.out.println(rectangle.getArea());
@@ -71,7 +76,7 @@ public class Main {
 //		System.out.println(rectangle.isPointEnclosed(rectangleCheckPoint));
 		
 		
-	
+//		this is point for checking point is inside or not 
 //		Point triangleCheckPoint = new Point(2,3);
 //		
 //		System.out.println(triangle.getArea());
@@ -83,7 +88,7 @@ public class Main {
 		
 		
 		
-		
+//		this is point for checking point is inside or not 
 //		Point regularPolygonCheckPoint = new Point(6,4);
 //		
 //		System.out.println(regularPolygon.getArea());
@@ -98,7 +103,7 @@ public class Main {
 		
 		
 		
-		
+		// from this we can add the shape into the screen
 		screen.addShape(square);
 		screen.addShape(circle);
 		screen.addShape(circle1);
@@ -115,8 +120,8 @@ public class Main {
 //			System.out.println(shape.getShapeType());
 //		}
 		System.out.println("before: ");
-		List<Shape> listShapes = screen.showShapes();
-		for(Shape shape : listShapes) {
+		List<Shape> beforeShapes = screen.showShapes();
+		for(Shape shape : beforeShapes) {
 			System.out.println(shape.getShapeType());
 		}
 		
@@ -128,11 +133,29 @@ public class Main {
 		System.out.println("All Shapes :");
 		
 		System.out.println("after: ");
-		List<Shape> listShapes1 = screen.showShapes();
-		for(Shape shape : listShapes1) {
+		List<Shape> AfterShapes = screen.showShapes();
+		for(Shape shape : AfterShapes) {
 			System.out.println(shape.getShapeType());
 		}
-//		
+		
+		
+		List<Shape> sortedArea = screen.sortedInAreaOrder();
+		for(Shape shape : sortedArea) {
+			System.out.println(shape.getShapeType());
+		}
+		
+		
+		List<Shape> sortedPerimeter = screen.sortedInPerimeterOrder();
+		for(Shape shape : sortedPerimeter) {
+			System.out.println(shape.getShapeType());
+		}
+		
+		List<Shape> sortedOriginDistance = screen.sortedInOriginDistanceOrder();
+		for(Shape shape : sortedOriginDistance ) {
+			System.out.println(shape.getShapeType());
+		}
+		
+		
 //		
 //		
 //		System.out.println(" ");

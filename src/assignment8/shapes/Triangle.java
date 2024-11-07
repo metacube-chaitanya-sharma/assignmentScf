@@ -17,7 +17,14 @@ public class Triangle implements Shape {
 		this.point = point;
 		this.parameters = parameters;
 	}
-	
+	/**
+	 * Method is used to calculate the distance b/w two points
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
+	 * @return
+	 */
 	public int distance(int x1, int y1 , int x2 ,int y2 ) {
 		
 		return (int ) Math.sqrt(Math.pow((x2 - x1), 2)
@@ -75,7 +82,16 @@ public class Triangle implements Shape {
 		return point; 
 		
 	}
-	
+	 /**
+	  * this is used to calculate the area of triangle
+	  * @param x1
+	  * @param y1
+	  * @param x2
+	  * @param y2
+	  * @param x3
+	  * @param y3
+	  * @return
+	  */
 	public int triangleArea(int x1, int y1, int x2, int y2,
             int x3, int y3) {
 		
@@ -83,7 +99,9 @@ public class Triangle implements Shape {
                 x3*(y1-y2))/2);
 	}
 
-	@Override
+	/** this method will return that a function is inside  or outside
+	 * @param checkPoint is the point which is inside or outside of shape
+	 */
 	public boolean isPointEnclosed(Point checkPoint) {
 		
 		

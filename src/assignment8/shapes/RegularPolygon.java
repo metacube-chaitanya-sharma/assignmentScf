@@ -20,7 +20,14 @@ public class RegularPolygon implements Shape {
 		this.parameters = parameters;
 	}
 	
-	
+	/**
+	 * this is used to calculate the distance between the two points
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
+	 * @return
+	 */
 	public int distance(int x1, int y1 , int x2 ,int y2 ) {
 		
 		return (int ) Math.sqrt(Math.pow((x2 - x1), 2)
@@ -41,7 +48,16 @@ public class RegularPolygon implements Shape {
 		return noOfSides * distanceOfSide; 
 		
 	}
-	
+	/**
+	 * this is used to calculate the area of the triangle
+	 * @param x1
+	 * @param y1
+	 * @param x2
+	 * @param y2
+	 * @param x3
+	 * @param y3
+	 * @return
+	 */
 	public int getTrianglesArea(int x1, int y1, int x2, int y2,
             int x3, int y3) {
 		
@@ -72,7 +88,9 @@ public class RegularPolygon implements Shape {
 	}
 	
 
-	@Override
+	/** this method will return that a function is inside  or outside
+	 * @param checkPoint is the point which is inside or outside of shape
+	 */
 	public boolean isPointEnclosed(Point checkPoint) {
 		// TODO Auto-generated method stub
 		

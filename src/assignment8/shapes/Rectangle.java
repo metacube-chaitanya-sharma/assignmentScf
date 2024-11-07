@@ -43,7 +43,9 @@ public class Rectangle implements Shape {
 		
 	}
 
-	@Override
+	/** this method will return that a function is inside  or outside
+	 * @param checkPoint is the point which is inside or outside of shape
+	 */
 	public boolean isPointEnclosed(Point checkPoint) {
 		// TODO Auto-generated method stub
 		
