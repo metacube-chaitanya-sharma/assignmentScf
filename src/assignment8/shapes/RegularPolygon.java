@@ -71,7 +71,7 @@ public class RegularPolygon implements Shape {
 		
 	      int area = 0;
 	         for(int i=0; i<parameters.size()-2; i=i+2){
-	        area += getTrianglesArea(point.x, point.y, parameters.get(i), parameters.get(i+1), parameters.get(i+2), parameters.get(i+3));
+	        area += getTrianglesArea(point.getX(), point.getY(), parameters.get(i), parameters.get(i+1), parameters.get(i+2), parameters.get(i+3));
 	         }
 
 	        return (int)area; 
@@ -94,15 +94,15 @@ public class RegularPolygon implements Shape {
 	public boolean isPointEnclosed(Point checkPoint) {
 		// TODO Auto-generated method stub
 		
-		int  initialArea = getTrianglesArea(checkPoint.x, checkPoint.y, point.x, point.y, parameters.get(0), parameters.get(1));
+		int  initialArea = getTrianglesArea(checkPoint.getX(), checkPoint.getY(), point.getX(), point.getY(), parameters.get(0), parameters.get(1));
 		
         int remaingArea = 0;
         for(int i=2; i<parameters.size()-1; i=i+2){
-           remaingArea += getTrianglesArea(checkPoint.x, checkPoint.y,
+           remaingArea += getTrianglesArea(checkPoint.getX(), checkPoint.getY(),
         		   parameters.get(i-2), parameters.get(i-1), parameters.get(i),parameters.get(i+1));
         }
         
-        int lastArea = getTrianglesArea(checkPoint.x , checkPoint.y , point.x , point.y , parameters.get(parameters.size()-2) , parameters.get(parameters.size()-1));
+        int lastArea = getTrianglesArea(checkPoint.getX() , checkPoint.getY() , point.getX() , point.getY() , parameters.get(parameters.size()-2) , parameters.get(parameters.size()-1));
         int totalArea = getArea();
         
         if(initialArea + remaingArea + lastArea == totalArea){

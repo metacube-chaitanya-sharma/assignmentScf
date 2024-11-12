@@ -35,7 +35,7 @@ public class MirrorSection {
 			System.out.println("Not a valid number"); 
         }
         catch(Exception e) {
-        	System.out.println(e.getStackTrace());
+        	e.printStackTrace();
         }
 
 	}

@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 public class Payroll  {
 
-	public Organization organization; 
+	private Organization organization; 
 	
-	
+
+
 	public Payroll(Organization organization) {
 		super();
 		this.organization = organization;
@@ -21,7 +22,7 @@ public class Payroll  {
 		 allEmployee =  organization.getAllEmployees(); 
 		 for(Employee it : allEmployee) {
 			
-			System.out.println(it.Name + " " + (it.getBasicSalary() - (it.getBasicSalary() * 30) / 100) );
+			System.out.println(it.name + " " + (it.getBasicSalary() - (it.getBasicSalary() * 30) / 100) );
 		}
 	
 	
@@ -36,7 +37,7 @@ public class Payroll  {
 		allEmployee =  organization.getAllEmployees(); 
 		
 	    for(Employee it : allEmployee) {
-			System.out.println("Name:" +  " " + it.Name 
+			System.out.println("Name:" +  " " + it.name 
 					+" ,Salary:" + " "  + it.getBasicSalary()
 					+ " ,Bonus:" + " "  + it.getBonus()
 					+ " ,Compensation:" + " " + it.getCompensation());

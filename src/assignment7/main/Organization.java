@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Organization {
 	
-	public String organizationName;
-	public static ArrayList<Department> departmentList = new ArrayList<Department>() ; 	  
+	private String organizationName;
+	private ArrayList<Department> departmentList  ; 	  
 	 	  
 
 	public Organization(String organizationName) {
 		super();
-		this.organizationName = organizationName;
-		
+		this.setOrganizationName(organizationName);
+		this.departmentList  = new ArrayList<Department>(); 
 		
 	}
 
@@ -66,6 +66,18 @@ public class Organization {
 		
 		return allEmployee; 
 		
+	}
+
+
+
+	public String getOrganizationName() {
+		return organizationName;
+	}
+
+
+
+	public void setOrganizationName(String organizationName) {
+		this.organizationName = organizationName;
 	}
 	
      

@@ -7,7 +7,7 @@ import assignment7.main.Employee;
 
 public class EngineeringDept extends Department {
     
-	public Department department;
+	
 	
 	public EngineeringDept(String departmentName) {
 		super(departmentName);

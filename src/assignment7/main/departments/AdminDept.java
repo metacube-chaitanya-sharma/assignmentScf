@@ -8,15 +8,13 @@ import assignment7.main.Organization;
 import assignment7.main.employee.Developer;
 
 public class AdminDept extends Department{
-	
-	public Department department;
-	
 
+    
 	public AdminDept(String departmentName) {
 		super(departmentName);
 		// TODO Auto-generated constructor stub
 	}
-    
+
 	/**
 	 * add the employee to the department
 	 */

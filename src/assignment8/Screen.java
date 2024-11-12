@@ -9,8 +9,8 @@ import java.util.List;
 
 public class Screen  {
 	
-	public int xMax; 
-	public int yMax;
+	private int xMax; 
+	private int yMax;
 	 
 	
 	List<Shape> listOfShape = new ArrayList<Shape>();
@@ -115,11 +115,11 @@ public class Screen  {
 		}
 		else if(ShapeType.REGULARPOLYGON.equals(shapeType)) {
 			
-			int minimizeX = point.x; 
-			int minimizeY = point.y ; 
+			int minimizeX = point.getX(); 
+			int minimizeY = point.getY() ; 
 			
-			int extremeX = point.x; 
-			int extremeY = point.y; 
+			int extremeX = point.getX(); 
+			int extremeY = point.getY(); 
 			
 			
 			

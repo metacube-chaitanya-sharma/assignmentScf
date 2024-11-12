@@ -5,9 +5,9 @@ import assignment7.main.Employee;
 
 public class Qa extends Employee {
 
-	public int salary; 
-	public int bonus; 
-	public int compensation; 
+	private int salary; 
+	private int bonus; 
+	private int compensation; 
 
 
 	public Qa(String employeeName,  int salary, int bonus, int compensation) {
@@ -42,5 +42,12 @@ public class Qa extends Employee {
 		
 		return compensation; 
 	}
+
+	@Override
+	public String toString() {
+		return "Qa [salary=" + salary + ", bonus=" + bonus + ", compensation=" + compensation + "]";
+	}
+	
+	
 
 }

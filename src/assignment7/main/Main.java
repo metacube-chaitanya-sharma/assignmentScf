@@ -49,7 +49,7 @@ public class Main {
 	   ArrayList<Employee> employeeList = metacube.getAllEmployees();	
 	   
 	   for(Employee emp : employeeList) {
-		   System.out.println(emp.Name);
+		   System.out.println(emp.name);
 	   }
 	   
 //	   metacube.getAllDepartment();

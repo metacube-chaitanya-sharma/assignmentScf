@@ -46,57 +46,57 @@ public class Main {
 		
 		
 		// this is point for checking point is inside or not 
-//		Point squareCheckPoint = new Point(3,4);
-//		
-//		System.out.println(square.getArea());
-//		Point point = square.getOrigin();
-//		System.out.println(point.x + " " +point.y);
-//		System.out.println(square.getPerimeter());
-//		System.out.println(square.isPointEnclosed(squareCheckPoint));
+		Point squareCheckPoint = new Point(3,4);
+		
+		System.out.println(square.getArea());
+		Point squareOrigin = square.getOrigin();
+		System.out.println(squareOrigin.getX() + " " +squareOrigin.getY());
+		System.out.println(square.getPerimeter());
+		System.out.println(square.isPointEnclosed(squareCheckPoint));
 		
 //		this is point for checking point is inside or not 
-//		Point circleCheckPoint = new Point(2,3);
-//		
-//		System.out.println(circle.getArea());
-//		Point point = circle.getOrigin(); 
-//		System.out.println(point.x + " " + point.y);
-//		
-//		System.out.println(circle.getPerimeter());
-//		System.out.println(circle.isPointEnclosed(circleCheckPoint));
+		Point circleCheckPoint = new Point(2,3);
 		
+		System.out.println(circle.getArea());
+		Point circleOrigin = circle.getOrigin(); 
+		System.out.println(circleOrigin.getX() + " " + circleOrigin.getY());
 		
-//		this is point for checking point is inside or not 
-//		Point rectangleCheckPoint = new Point(2,3);
-//		
-//		System.out.println(rectangle.getArea());
-//		Point point = rectangle.getOrigin(); 
-//		System.out.println(point.x + " " + point.y);
-//		
-//		System.out.println(rectangle.getPerimeter());
-//		System.out.println(rectangle.isPointEnclosed(rectangleCheckPoint));
+		System.out.println(circle.getPerimeter());
+		System.out.println(circle.isPointEnclosed(circleCheckPoint));
 		
 		
 //		this is point for checking point is inside or not 
-//		Point triangleCheckPoint = new Point(2,3);
-//		
-//		System.out.println(triangle.getArea());
-//		Point point = triangle.getOrigin(); 
-//		System.out.println(point.x + " " + point.y);
-//		
-//		System.out.println(triangle.getPerimeter());
-//		System.out.println(triangle.isPointEnclosed(triangleCheckPoint));
+		Point rectangleCheckPoint = new Point(2,3);
+		
+		System.out.println(rectangle.getArea());
+		Point rectangleOrigin = rectangle.getOrigin(); 
+		System.out.println(rectangleOrigin.getX() + " " + rectangleOrigin.getY());
+		
+		System.out.println(rectangle.getPerimeter());
+		System.out.println(rectangle.isPointEnclosed(rectangleCheckPoint));
+		
+		
+//		this is point for checking point is inside or not 
+		Point triangleCheckPoint = new Point(2,3);
+		
+		System.out.println(triangle.getArea());
+		Point triangleOrigin = triangle.getOrigin(); 
+		System.out.println(triangleOrigin.getX() + " " + triangleOrigin.getY());
+		
+		System.out.println(triangle.getPerimeter());
+		System.out.println(triangle.isPointEnclosed(triangleCheckPoint));
 		
 		
 		
 //		this is point for checking point is inside or not 
-//		Point regularPolygonCheckPoint = new Point(6,4);
-//		
-//		System.out.println(regularPolygon.getArea());
-//		Point point = regularPolygon.getOrigin(); 
-//		System.out.println(point.x + " " + point.y);
-//		
-//		System.out.println(regularPolygon.getPerimeter());
-//		System.out.println(regularPolygon.isPointEnclosed(regularPolygonCheckPoint));
+		Point regularPolygonCheckPoint = new Point(6,4);
+		
+		System.out.println(regularPolygon.getArea());
+		Point polygonOrigin = regularPolygon.getOrigin(); 
+		System.out.println(polygonOrigin.getX() + " " + polygonOrigin.getY());
+		
+		System.out.println(regularPolygon.getPerimeter());
+		System.out.println(regularPolygon.isPointEnclosed(regularPolygonCheckPoint));
 		
 		
 		
@@ -115,17 +115,14 @@ public class Main {
 		
 		
 		
-//		List<Shape> sortedArea = screen.sortedInAreaOrder();
-//		for(Shape shape : sortedArea) {
-//			System.out.println(shape.getShapeType());
-//		}
+	
 		System.out.println("before: ");
 		List<Shape> beforeShapes = screen.showShapes();
 		for(Shape shape : beforeShapes) {
 			System.out.println(shape.getShapeType());
 		}
 		
-//		screen.deleteShape(rectangle);
+		screen.deleteShape(rectangle);
 		
 		screen.deleteAllShape(ShapeType.CIRCLE);
 		
@@ -156,16 +153,15 @@ public class Main {
 		}
 		
 		
-//		
-//		
-//		System.out.println(" ");
-//		System.out.println("TimeStamp : ");
+	
+	    System.out.println(" ");
+	    System.out.println("TimeStamp : ");
 		
-//		List<Shape> timeStamp = screen.sortedInTimeStampOrder();
-//		for(Shape shape : timeStamp) {
-//			System.out.println(shape.getShapeType());
-//		}
-//		System.out.println(" ");
+	    List<Shape> timeStamp = screen.sortedInTimeStampOrder();
+	    for(Shape shape : timeStamp) {
+		 System.out.println(shape.getShapeType());
+	    }
+	    System.out.println(" ");
 		
 		
 

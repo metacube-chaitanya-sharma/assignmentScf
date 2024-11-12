@@ -4,14 +4,11 @@ import java.util.List;
 
 public abstract  class Employee {
 	
-	public String Name; 
+	public String name; 
 	
-	
-	
-
-	public Employee(String Name) {
+	public Employee(String name) {
 		super();
-		this.Name = Name;
+		this.name = name;
 
 	}
 
