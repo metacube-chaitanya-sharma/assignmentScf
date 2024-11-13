@@ -9,6 +9,7 @@ public class Orders {
 	private Date orderDate;
 	private int orderTotal; 
 	private String status;
+	
 	public int getId() {
 		return id;
 	}

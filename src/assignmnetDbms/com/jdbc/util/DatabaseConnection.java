@@ -8,8 +8,7 @@ import java.sql.SQLException;
 public class DatabaseConnection {
  
 	private static DatabaseConnection dbIsntance;
-    private static Connection con ;
-   
+    private static Connection con ;  
 
 
     private DatabaseConnection() {
@@ -24,7 +23,7 @@ public class DatabaseConnection {
     return dbIsntance;
     }
 
-    public static  Connection getConnection(){
+    public static  Connection getConnection() {
 
         if(con==null){
             try {
@@ -33,17 +32,24 @@ public class DatabaseConnection {
                 String password = "root";
                 con = DriverManager.getConnection( host, username, password );
                 
-                
                 } 
-            catch (SQLException ex) {
-            	
-            
+            catch (SQLException ex) { 
                System.out.println(ex.getMessage()); 
             } 
             
             
         }
+        else {
+        	try {
+        	con.close();
+        	}
+        	catch(SQLException ex) {
+        		System.out.println(ex.getMessage());
+        	}
+        }
 
         return con;
     }
+	
+	
 }
