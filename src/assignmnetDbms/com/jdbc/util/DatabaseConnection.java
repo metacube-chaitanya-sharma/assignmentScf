@@ -27,6 +27,7 @@ public class DatabaseConnection {
 
         if(con==null){
             try {
+          
                 String host = "jdbc:mysql://localhost:3306/storeFront";
                 String username = "root";
                 String password = "root";

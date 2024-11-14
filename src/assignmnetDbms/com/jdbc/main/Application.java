@@ -30,7 +30,7 @@ public class Application {
 		helperDao.addImages(con);
 		
 		// used to delete the product which is not order since last year
-		System.out.println(helperDao.deleteAllProduct(con)); 
+		System.out.println("Number of product deleted :" + helperDao.deleteAllProduct(con)); 
 		
 		
 		System.out.println("");

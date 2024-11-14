@@ -85,20 +85,18 @@ public class HelperDao implements StoreFrontDao{
 	 */
 	public int deleteAllProduct(Connection con) throws SQLException{
 		
-	 PreparedStatement ps = con.prepareStatement("DELETE FROM product p INNER JOIN (SELECT productId "
-				+ "FROM orders "
-				+ "INNER JOIN orderitem ON orders.id = orderitem.orderId Where "
-				+ "orders.orderDate >= curdate() - interval 1 year) "
-				+ "o ON p.id = o.productId;");
 	 
-	ResultSet result =  ps.executeQuery();	
-	int numberOfDeletedProduct =0; 
-	while(result.next()) {
-		numberOfDeletedProduct++; 
-	}
+	 PreparedStatement ps = con.prepareStatement("DELETE from product where id in "
+	 		+ "(SELECT op.productId FROM orders O left join orderitem OI "
+	 		+ "ON O.ID = OI.OrderID WHERE O.ORDERDATE > date_sub(curdate(),INTERVAL 1 YEAR)");
+	 
+	 int cntDelete = ps.executeUpdate(); 
+	 
+	 return cntDelete; 
 	
 	
-	return numberOfDeletedProduct; 
+	
+	
 		
 		
 	}
