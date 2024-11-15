@@ -87,17 +87,13 @@ public class HelperDao implements StoreFrontDao{
 		
 	 
 	 PreparedStatement ps = con.prepareStatement("DELETE from product where id in "
-	 		+ "(SELECT op.productId FROM orders O left join orderitem OI "
-	 		+ "ON O.ID = OI.OrderID WHERE O.ORDERDATE > date_sub(curdate(),INTERVAL 1 YEAR)");
+	 		+ "(SELECT OI.productId FROM orders O left join orderitem OI "
+	 		+ "ON O.ID = OI.OrderID WHERE O.ORDERDATE > date_sub(curdate(),INTERVAL 1 YEAR));");
 	 
 	 int cntDelete = ps.executeUpdate(); 
 	 
 	 return cntDelete; 
 	
-	
-	
-	
-		
 		
 	}
 	

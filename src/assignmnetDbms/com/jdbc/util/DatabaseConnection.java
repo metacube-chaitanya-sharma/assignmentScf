@@ -51,6 +51,19 @@ public class DatabaseConnection {
 
         return con;
     }
+    
+    
+    /*
+     * try(con = DriverManager.getConnection( host, username, password )){
+     * }
+     * catch(SQLException e){
+     * System.out.println(e.getMessage()); 
+     * }
+     * 
+     *  there is no need of finally block because it close the connection automatically 
+     *
+     * */
+     */
 	
 	
 }
